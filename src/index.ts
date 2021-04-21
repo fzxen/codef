@@ -1,11 +1,12 @@
 import download from "./download";
 import ora from "ora";
-import templates from "./templates";
+import { templates } from "./templates";
+import logger from "./logger";
 
 export function create(frame: string, name: string) {
   const frames = templates.map((t) => t.frame);
   if (!frames.includes(frame)) {
-    console.error(
+    logger.error(
       `${frame} is not support for now! we support ${frames.join(",")}`
     );
     process.exit();

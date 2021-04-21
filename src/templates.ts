@@ -1,4 +1,4 @@
-const templates = [
+const repos = [
   {
     frame: "electron-vue",
     repo: "https://gitee.com/zxffan/electron-vue3.git#electron-vue",
@@ -17,4 +17,5 @@ const templates = [
   },
 ];
 
-export default templates;
+export const templates = repos;
+export const repoName = repos.map((r) => r.frame);

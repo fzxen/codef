@@ -1,0 +1,30 @@
+{
+  "name": "@codef/shared",
+  "version": "0.0.1",
+  "description": "codef shared utilities",
+  "keywords": [
+    "codef",
+    "shared"
+  ],
+  "author": "ZXFAN <zx_fan@outlook.com>",
+  "homepage": "https://github.com/zxffan/codef/tree/main/packages/shared#readme",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zxffan/codef.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/zxffan/codef/issues"
+  }
+}

@@ -22,9 +22,13 @@
     "url": "git+https://github.com/zxffan/codef.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "bugs": {
     "url": "https://github.com/zxffan/codef/issues"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
   }
 }

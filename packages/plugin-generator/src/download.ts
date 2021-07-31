@@ -3,7 +3,7 @@ import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
 
-export function download(repo: string, name: string) {
+export default function download(repo: string, name: string) {
   const destination = path.resolve(process.cwd(), name);
   if (existsSync(destination))
     return Promise.reject(new Error(`folder ${name} is existed!`));

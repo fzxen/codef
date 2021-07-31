@@ -1,13 +1,12 @@
 {
   "name": "codef",
   "version": "0.0.1",
-  "description": "useful cli tools for creating project rapidly",
+  "description": "code definition, define your code!",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "bin"
-  ],
+  "bin": {
+    "codef": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w"
@@ -24,11 +23,7 @@
   },
   "homepage": "https://github.com/zxffan/codef#readme",
   "dependencies": {
-    "colors": "^1.4.0",
-    "commander": "^7.2.0",
-    "ora": "^5.4.0"
-  },
-  "devDependencies": {
-    "ts-node": "^10.1.0"
+    "@codef/core": "^0.0.1",
+    "@codef/plugin-generator": "^0.0.1"
   }
 }

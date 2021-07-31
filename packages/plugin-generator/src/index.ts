@@ -1,14 +1,17 @@
 import { definePlugin } from "@codef/core";
 import { templates } from "./templates";
-import { logger, download } from "@codef/shared";
+import { logger } from "@codef/shared";
+import download from "./download";
 
-export default definePlugin(({ registerCmd }) => {
-  registerCmd("create <frame> [name]")
-    .description("create a new project")
-    .alias("c")
-    .action((frame: string, name: string): void => {
+export default definePlugin(({ registerCommand }) => {
+  registerCommand({
+    command: "create <frame> [name]",
+    description: "create a new project",
+    alias: "c",
+    action(frame: string, name: string) {
       create(frame, name);
-    });
+    },
+  });
 });
 
 function create(frame: string, name: string) {

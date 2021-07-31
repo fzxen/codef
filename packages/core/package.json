@@ -1,12 +1,9 @@
 {
-  "name": "@codef/plugin-generator",
+  "name": "@codef/core",
   "version": "0.0.1",
+  "description": "useful cli tools for creating project rapidly",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "description": "Genrator plugin for codef",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w"
@@ -22,7 +19,7 @@
     "url": "https://github.com/zxffan/codef/issues"
   },
   "homepage": "https://github.com/zxffan/codef#readme",
-  "devDependencies": {
-    "@codef/core": "^0.0.1"
+  "dependencies": {
+    "commander": "^7.2.0"
   }
 }

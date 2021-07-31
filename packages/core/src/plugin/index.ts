@@ -1,10 +1,4 @@
-import { registerCommand } from "../cli";
-
-type RegisterCommandType = typeof registerCommand;
-
-interface PluginCreatorContext {
-  registerCommand: RegisterCommandType;
-}
+import type { PluginCreatorContext } from "../cli";
 
 export type PluginCreator<T = unknown> = (
   context: PluginCreatorContext,
@@ -13,7 +7,7 @@ export type PluginCreator<T = unknown> = (
 
 export function definePlugin<T>(creator: PluginCreator<T>) {
   function install(opts?: T) {
-    return () => creator({ registerCommand }, opts);
+    return (context: PluginCreatorContext) => creator(context, opts);
   }
   return { install };
 }

@@ -9,13 +9,10 @@ code define, define your code!
 ```javascript
 import { definePlugin } from "codef"
 
-const plugin = definePlugin(({ register }, options) => {
-  registerCmd("create", {
-    description: "create a project",
-    alias: "c"
-  }, () => {
-    // command action
-  })
+const plugin = definePlugin((context, options) => {
+  const { registerCommand, registerTemplate } = context;
+  
+  // TODO
 })
 
 export default plugin
@@ -30,8 +27,8 @@ import { defineConfig } from "codef"
 // ts
 export default defineConfig({
   plugins: [
-    codefPluginCreate(options),
-    codefPluginVue(options),
+    creatorPlugin.install(options),
+    vuePlugin.install(options),
   ]
 })
 

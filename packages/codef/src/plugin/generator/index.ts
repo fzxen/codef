@@ -22,6 +22,17 @@ export default definePlugin(({ registerCommand }) => {
       create(template, name);
     },
   });
+
+  registerCommand({
+    command: "list",
+    alias: "ls",
+    description: "list supported template",
+    action() {
+      const repos = getRepos();
+      const repoNames = repos.map((r) => r.name);
+      logger.notice(repoNames.join("\n"));
+    },
+  });
 });
 
 function create(template: string, name: string) {

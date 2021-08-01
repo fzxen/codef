@@ -1,27 +1,31 @@
-#!/usr/bin/env node
-import { loadConfig, registerCommand } from "@codef/core";
-import generatorPlugin from "@codef/plugin-generator";
+import { parseEnv } from "./cli";
+import { loadConfig, defineConfig } from "./config";
+import { definePlugin, generatorPlugin } from "./plugin";
 
-const config = loadConfig();
+export { defineConfig, definePlugin };
 
-const pluginContext = {
-  registerCommand,
-};
+init();
 
-// run config
-function registerPlugins() {
-  config.plugins.unshift(...getInsetPlugin());
-  config.plugins.forEach((pluginCreator) => {
-    try {
-      pluginCreator(pluginContext);
-    } catch {
-      // TODO log 某一个plugin 异常
-    }
-  });
+function init() {
+  const config = loadConfig();
+
+  // run config
+  function registerPlugins() {
+    const plugins = [...getInsetPlugin(), ...config.plugins];
+    plugins.forEach((pluginCreator) => {
+      try {
+        pluginCreator();
+      } catch {
+        // TODO log 某一个plugin 异常
+      }
+    });
+  }
+
+  function getInsetPlugin() {
+    return [generatorPlugin.install()];
+  }
+
+  registerPlugins();
+
+  parseEnv(process.argv);
 }
-
-function getInsetPlugin() {
-  return [generatorPlugin.install()];
-}
-
-registerPlugins();

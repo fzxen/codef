@@ -1,12 +1,17 @@
 {
   "name": "codef",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "code definition, define your code!",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "codef": "./dist/index.js"
+    "codef": "./bin/cmd"
   },
+  "files": [
+    "bin",
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w"
@@ -23,7 +28,7 @@
   },
   "homepage": "https://github.com/zxffan/codef#readme",
   "dependencies": {
-    "@codef/core": "^0.0.1",
-    "@codef/plugin-generator": "^0.0.1"
+    "@codef/shared": "^0.0.1",
+    "commander": "^8.1.0"
   }
 }

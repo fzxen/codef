@@ -1,8 +1,5 @@
-import { spawn } from "child_process";
-import type { PluginCreatorContext } from "../cli";
-
 export interface CliConfig {
-  plugins?: Array<(context: PluginCreatorContext) => void>;
+  plugins?: Array<() => void>;
 }
 
 export function loadConfig(): Required<CliConfig> {

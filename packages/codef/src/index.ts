@@ -6,8 +6,8 @@ export { defineConfig, definePlugin };
 
 init();
 
-function init() {
-  const config = loadConfig();
+async function init() {
+  const config = await loadConfig();
 
   // run config
   function registerPlugins() {

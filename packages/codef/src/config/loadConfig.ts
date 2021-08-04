@@ -4,6 +4,8 @@ import fs from "fs/promises";
 import { logger } from "../../../shared/dist";
 import nodePath from "path";
 
+const configDir = nodePath.join(process.cwd(), "./.code.config");
+
 export async function loadConfig(): Promise<Required<CliConfig>> {
   const file = await getConfigFilePath();
 
@@ -13,18 +15,17 @@ export async function loadConfig(): Promise<Required<CliConfig>> {
   await buildTs(path);
   const config = require(jsPath)?.default as CliConfig;
 
-  // await fs.rm(jsPath);
+  await fs.rm(configDir, {
+    force: true,
+    recursive: true,
+  });
 
   return richConfig(config);
 }
 
 async function getConfigFilePath() {
-  const configPath = `${process.cwd()}/codef.config`;
-  const jsPath = nodePath.join(
-    process.cwd(),
-    "./.codef/config",
-    "codef.config.js"
-  );
+  const configPath = nodePath.join(process.cwd(), "codef.config");
+  const jsPath = nodePath.join(configDir, "codef.config.js");
   try {
     await fs.access(configPath + ".ts");
 
@@ -39,7 +40,7 @@ async function getConfigFilePath() {
     await fs.access(configPath + ".js");
 
     return {
-      jsPath: jsPath,
+      jsPath,
       path: configPath + ".js",
       isTs: false,
     };
@@ -58,7 +59,7 @@ function buildTs(path: string) {
     const process = spawn("tsc", [
       path,
       "--outDir",
-      "./.codef/config",
+      configDir,
       "--module",
       "commonjs",
       "--allowJs",
